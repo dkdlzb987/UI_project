@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Untitled</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        *,
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        #wrap {
+            width: 1920px;
+            margin: 0 auto;
+
+        }
+
+        header {
+            background-color: navy;
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+            padding-top: 10px;
+            font-weight: bolder;
+            color: white;
+            text-align: left;
+            font-size: 30px;
+            display: flex;
+        }
+
+        header p {
+            font-weight: 5;
+
+        }
+
+        header input {
+            font-size: 15px;
+            height: 20px;
+            margin-bottom: 20px;
+
+        }
+
+        .search {
+
+            background-color: white;
+            height: 20px;
+            width: 40px;
+        }
+
+        .showbox {
+            width: 200px;
+            height: 30px;
+            position: relative;
+        }
+
+        .movebox {
+            width: 100%;
+            height: 90px;
+            position: absolute;
+            font-size: 15px;
+        }
+
+        .movebox :nth-child(2),
+        .movebox :nth-child(3) {
+            display: none;
+        }
+
+        .movebox div {
+            width: 100%;
+            height: 30px;
+        }
+
+        .btn button {
+            margin-top: 50px;
+            color: white;
+            font-size: 20px;
+            background-color: navy;
+            border: none;
+            right: 300px;
+
+        }
+
+        .btn {
+            margin-left: 700px;
+        }
+
+
+        nav {
+            background-color: white;
+
+            width: 100%;
+            height: 30px;
+            margin-bottom: 10px;
+            display: inline-block;
+            font-weight: bolder;
+            color: white;
+            font-size: 20px;
+        }
+
+        section {
+            background-color: white;
+            width: 100%;
+            height: 1500px;
+            margin-bottom: 10px;
+            display: inline-block;
+            font-weight: bolder;
+            color: black;
+            border: 1px solid black;
+            font-size: 20px;
+            display: flex;
+
+        }
+
+        section #sectionmenu {
+            border: 1px solid black;
+            width: 20%;
+            height: 100%;
+
+
+        }
+
+        section #sectionmenu2 {
+            border: 1px solid black;
+            width: 80%;
+            height: 100%;
+
+        }
+
+        #banner {
+            position: fixed;
+            border: none;
+            left: 2150px;
+            top: 900px;
+
+
+        }
+
+        #banner button {
+            width: 50px;
+            height: 50px;
+            background-color: navy;
+            color: white;
+
+        }
+
+        #sectionmenu button {
+            width: 49%;
+            height: 50px;
+            display: inline-block;
+            color: white;
+            background-color: navy;
+        }
+
+        #leftList {
+            position: relative;
+        }
+
+        /* ============================================================ */
+        #leftList li button {
+            width: 100%;
+            text-align: left;
+            color: black;
+            background-color: white;
+            font-weight: bolder;
+            border-bottom: solid 1px blue;
+
+        }
+
+
+        .menu {
+            display: flex;
+            list-style: none;
+
+        }
+
+        #leftList li {
+            list-style: none;
+
+
+
+        }
+
+        .menu>li {
+            position: relative;
+            width: 100%;
+
+        }
+
+        .menu ul {
+            position: absolute;
+        }
+
+        button img {
+            width: 200px;
+            height: 200px;
+            margin: 22px;
+        }
+
+        #leftList li button:hover {
+            font-size: 25px;
+            color: navy;
+        }
+
+        .sub1,
+        .sub2>button:hover {
+            font-size: 25px;
+
+        }
+
+        #sectionmenu3 {
+            display: none;
+        }
+
+        #sectionmenu2 {
+            display: block;
+        }
+
+        #sectionmenu4 {
+            display: none;
+        }
+
+        .sub1>button:hover {
+            font-size: 25px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <header>&nbsp; MUSINSA &nbsp;
+            <p>MEN &nbsp</p>
+            <input type="text" style="margin-top: 10px;" placeholder="검색어 입력"><button class="search"
+                style="margin-top: 10px;">검색</button>
+            <div class="showbox">
+                <div class="movebox" style="margin-top: 10px;">
+                    <div> &nbsp1등: 모자</div>
+                    <div> &nbsp2등: 기능성 의류</div>
+                    <div> &nbsp3등: 골프웨어</div>
+                </div>
+            </div>
+
+            <div class="btn">
+                <button onclick="lank()">랭킹</button>
+                <button onclick="">업데이트</button>
+                <button onclick="">브랜드</button>
+                <button onclick="">스타일</button>
+                <button onclick="">스페셜</button>
+                <button onclick="">콘텐츠</button>
+                <button onclick="">세일</button>
+            </div>
+        </header>
+
+
+        <nav><button style="background-color: white; width: 100px;" id="login" onclick="login()">로그인</button>
+            <button style="background-color: white; width: 100px;" id="join" onclick="join()">회원가입</button>
+        </nav>
+
+        <section>
+            <div id="sectionmenu">
+                <ul class="menu">
+                    <li class="sub1"><button style="border: none;">품목</button>
+                        <ul id="leftList">
+                            <li><button id="ranking">인기</button></li>
+                            <li><button id="rsp">상의</button></li>
+                            <li><button>아우터</button></li>
+                            <li><button>바지</button></li>
+                            <li><button>가방</button></li>
+                            <li><button>스니커즈</button></li>
+                            <li><button>모자</button></li>
+                            <li><button>시계</button></li>
+                        </ul>
+                    </li>
+                    <li class="sub2"><button style="border: none;">브랜드</button>
+                        <ul id="leftList">
+                            <li><button>스투시</button></li>
+                            <li><button>오베이</button></li>
+                            <li><button>닥터마틴</button></li>
+                            <li><button>마크 곤잘레스</button></li>
+                            <li><button>키르시</button></li>
+                            <li><button>메종키츠네</button></li>
+                            <li><button>컨버스</button></li>
+                            <li><button>스트라덱스</button></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div id="sectionmenu2">
+                <div class="movediv">
+                    <div>
+                        <button><img src="1.png" alt=""></button>
+                        <button><img src="2.png" alt=""></button>
+                        <button><img src="3.png" alt=""></button>
+                        <button><img src="4.png" alt=""></button>
+                        <button><img src="5.png" alt=""></button>
+                        <button><img src="6.png" alt=""></button>
+
+                    </div>
+                    <div>
+                        <button><img src="3.png" alt=""></button>
+                        <button><img src="4.png" alt=""></button>
+                        <button><img src="1.png" alt=""></button>
+                        <button><img src="8.png" alt=""></button>
+                        <button><img src="9.png" alt=""></button>
+                        <button><img src="10.png" alt=""></button>
+                    </div>
+                    <div>
+                        <button><img src="1.png" alt=""></button>
+                        <button><img src="2.png" alt=""></button>
+                        <button><img src="3.png" alt=""></button>
+                        <button><img src="4.png" alt=""></button>
+                        <button><img src="5.png" alt=""></button>
+                        <button><img src="6.png" alt=""></button>
+                    </div>
+                    <div>
+                        <button><img src="1.png" alt=""></button>
+                        <button><img src="4.png" alt=""></button>
+                        <button><img src="2.png" alt=""></button>
+                        <button><img src="8.png" alt=""></button>
+                        <button><img src="9.png" alt=""></button>
+                        <button><img src="10.png" alt=""></button>
+                    </div>
+                </div>
+                <div>
+                    <button><img src="1.png" alt=""></button>
+                    <button><img src="2.png" alt=""></button>
+                    <button><img src="3.png" alt=""></button>
+                    <button><img src="4.png" alt=""></button>
+                    <button><img src="5.png" alt=""></button>
+                    <button><img src="6.png" alt=""></button>
+                </div>
+                <div>
+                    <button><img src="1.png" alt=""></button>
+                    <button><img src="4.png" alt=""></button>
+                    <button><img src="2.png" alt=""></button>
+                    <button><img src="8.png" alt=""></button>
+                    <button><img src="9.png" alt=""></button>
+                    <button><img src="10.png" alt=""></button>
+                </div>
+
+            </div>
+            <div>
+                <div id="banner">
+                    <button>남성</button><br>
+                    <button>여성</button><br>
+                    <button>공유</button><br>
+                    <button>▲</button><br>
+                    <button>▼</button><br>
+                </div>
+            </div>
+            <div id="sectionmenu3">
+                <div class="movediv_rankig">
+                    <div>
+                        <button><img src="runi.jpg" alt=""></button>
+                        <button><img src="runi.jpg" alt=""></button>
+                        <button><img src="runi.jpg" alt=""></button>
+                        <button><img src="runi.jpg" alt=""></button>
+                        <button><img src="runi.jpg" alt=""></button>
+                        <button><img src="runi.jpg" alt=""></button>
+
+                    </div>
+                    <div>
+                        <button><img src="runi.jpg" alt=""></button>
+                        <button><img src="runi.jpg" alt=""></button>
+                        <button><img src="runi.jpg" alt=""></button>
+                        <button><img src="runi.jpg" alt=""></button>
+                        <button><img src="runi.jpg" alt=""></button>
+                        <button><img src="runi.jpg" alt=""></button>
+                    </div>
+                    <div>
+                        <button><img src="runi.jpg" alt=""></button>
+                        <button><img src="runi.jpg" alt=""></button>
+                        <button><img src="runi.jpg" alt=""></button>
+                        <button><img src="runi.jpg" alt=""></button>
+                        <button><img src="runi.jpg" alt=""></button>
+                        <button><img src="runi.jpg" alt=""></button>
+                    </div>
+                    <div>
+                        <button><img src="runi.jpg" alt=""></button>
+                        <button><img src="runi.jpg" alt=""></button>
+                        <button><img src="runi.jpg" alt=""></button>
+                        <button><img src="runi.jpg" alt=""></button>
+                        <button><img src="runi.jpg" alt=""></button>
+                        <button><img src="runi.jpg" alt=""></button>
+                    </div>
+                </div>
+                <div>
+                    <button><img src="runi.jpg" alt=""></button>
+                    <button><img src="runi.jpg" alt=""></button>
+                    <button><img src="runi.jpg" alt=""></button>
+                    <button><img src="runi.jpg" alt=""></button>
+                    <button><img src="runi.jpg" alt=""></button>
+                    <button><img src="runi.jpg" alt=""></button>
+                </div>
+                <div>
+                    <button><img src="runi.jpg" alt=""></button>
+                    <button><img src="runi.jpg" alt=""></button>
+                    <button><img src="runi.jpg" alt=""></button>
+                    <button><img src="runi.jpg" alt=""></button>
+                    <button><img src="runi.jpg" alt=""></button>
+                    <button><img src="runi.jpg" alt=""></button>
+                </div>
+
+            </div>
+            <div id="sectionmenu4">
+                <div class="movediv_rankig">
+                    <div>
+                        <button><img src="rock.png" alt=""></button>
+                        <button><img src="scissors.png" alt=""></button>
+                        <button><img src="paper.png" alt=""></button>
+                        <button><img src="rock.png" alt=""></button>
+                        <button><img src="scissors.png" alt=""></button>
+                        <button><img src="paper.png" alt=""></button>
+
+                    </div>
+                    <div>
+                        <button><img src="rock.png" alt=""></button>
+                        <button><img src="scissors.png" alt=""></button>
+                        <button><img src="paper.png" alt=""></button>
+                        <button><img src="rock.png" alt=""></button>
+                        <button><img src="scissors.png" alt=""></button>
+                        <button><img src="paper.png" alt=""></button>
+                    </div>
+                    <div>
+                        <button><img src="rock.png" alt=""></button>
+                        <button><img src="scissors.png" alt=""></button>
+                        <button><img src="paper.png" alt=""></button>
+                        <button><img src="rock.png" alt=""></button>
+                        <button><img src="scissors.png" alt=""></button>
+                        <button><img src="paper.png" alt=""></button>
+                    </div>
+                    <div>
+                        <button><img src="rock.png" alt=""></button>
+                        <button><img src="scissors.png" alt=""></button>
+                        <button><img src="paper.png" alt=""></button>
+                        <button><img src="rock.png" alt=""></button>
+                        <button><img src="scissors.png" alt=""></button>
+                        <button><img src="paper.png" alt=""></button>
+                    </div>
+                </div>
+                <div>
+                    <button><img src="rock.png" alt=""></button>
+                    <button><img src="scissors.png" alt=""></button>
+                    <button><img src="paper.png" alt=""></button>
+                    <button><img src="rock.png" alt=""></button>
+                    <button><img src="scissors.png" alt=""></button>
+                    <button><img src="paper.png" alt=""></button>
+                </div>
+                <div>
+                    <button><img src="rock.png" alt=""></button>
+                    <button><img src="scissors.png" alt=""></button>
+                    <button><img src="paper.png" alt=""></button>
+                    <button><img src="rock.png" alt=""></button>
+                    <button><img src="scissors.png" alt=""></button>
+                    <button><img src="paper.png" alt=""></button>
+                </div>
+
+            </div>
+            <div>
+                <div id="banner">
+                    <button>남성</button><br>
+                    <button>여성</button><br>
+                    <button>공유</button><br>
+                    <button>▲</button><br>
+                    <button>▼</button><br>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+<!--제이쿼리 시작 ===================================================================================== -->
+<script>
+
+    setInterval(function () {
+        $(".showbox").eq(0).children(".movebox").animate({ top: "-30px" }, 1000, function () {
+            var x = $(".showbox").eq(0).children(".movebox").children("div").eq(0).detach();
+            $(".showbox").eq(0).children(".movebox").append(x);
+            $(".showbox").eq(0).children(".movebox").css("top", "0");
+        });
+    }, 3000);
+    $(function () {
+        $("#ranking").click(function () {
+            $("#sectionmenu2").css("display", "none");
+            $("#sectionmenu3").css("display", "block");
+            $("#sectionmenu4").css("display", "none");
+        });
+    });
+    $(function () {
+        $("#rsp").click(function () {
+            $("#sectionmenu2").css("display", "none");
+            $("#sectionmenu3").css("display", "none");
+            $("#sectionmenu4").css("display", "block");
+        });
+    });
+    $(document).ready(function () {
+        $("#sectionmenu2").replaceAll("#sectionmenu2");
+    });
+
+
+
+    //자바 스크립트==================================================================================
+    function login() {
+        location.href = "login.html";
+    }
+    function join() {
+        location.href = "join.html";
+    }
+    function lank() {
+        location.href = "js43.html";
+
+    }
+
+
+
+</script>
+
+</html>
+
+
+<!-- <button id="category">품목</button>
+                <button id="brand">브랜드</button>
+                <ul id="leftList">
+                    <li><button>인기</button></li>
+                    <li><button>상의</button></li>
+                    <li><button>아우터</button></li>
+                    <li><button>바지</button></li>
+                    <li><button>가방</button></li>
+                    <li><button>스니커즈</button></li>
+                    <li><button>모자</button></li>
+                    <li><button>시계</button></li>
+                </ul> -->

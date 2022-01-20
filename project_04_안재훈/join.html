@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Untitled</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        *,
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        #wrap {
+            width: 1920px;
+            margin: 0 auto;
+
+        }
+
+        header {
+            background-color: navy;
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+            padding-top: 10px;
+            font-weight: bolder;
+            color: white;
+            text-align: left;
+            font-size: 30px;
+            display: flex;
+        }
+
+        header p {
+            font-weight: 5;
+
+        }
+
+        header input {
+            font-size: 15px;
+            height: 20px;
+            margin-bottom: 20px;
+
+        }
+        
+
+
+        .showbox {
+            width: 200px;
+            height: 30px;
+            position: relative;
+        }
+
+        .movebox {
+            width: 100%;
+            height: 90px;
+            position: absolute;
+            font-size: 15px;
+        }
+
+        .movebox :nth-child(2),.movebox :nth-child(3) {
+            display: none;
+        }
+
+        .movebox div {
+            width: 100%;
+            height: 30px;
+        }
+
+        .btn button {
+            margin-top: 50px;
+            color: white;
+            font-size: 20px;
+            background-color: navy;
+            border: none;
+            right: 300px;
+
+        }
+
+        .btn {
+            margin-left: 700px;
+        }
+
+
+        nav {
+            background-color: white;
+
+            width: 100%;
+            height: 30px;
+            margin-bottom: 10px;
+            display: inline-block;
+            font-weight: bolder;
+            color: white;
+            font-size: 20px;
+        }
+
+        form {
+            position: absolute;
+            top: 200px;
+            left: 850px;
+            width: 720px;
+            height: 450px;
+            border: 1px solid black;
+            text-align: center;
+            background-color: navy;
+
+        }
+
+        form div {
+
+            margin: 50px;
+            color: white;
+            border: 1px solid white;
+
+
+        }
+
+        form div input {
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <header> &nbsp; <p style="font-weight: bolder;" onclick="main()">MUSINSA</p>  &nbsp;
+            <p>MEN &nbsp</p>
+            <input type="text" id="text" style="margin-top: 10px;">
+            <div class="showbox">
+                <div class="movebox" style="margin-top: 10px;">
+                    <div> &nbsp1등: 모자</div>
+                    <div> &nbsp2등: 기능성 의류</div>
+                    <div> &nbsp3등: 골프웨어</div>
+                </div>
+            </div>
+
+            <div class="btn">
+                <button onclick="lank()">랭킹</button>
+                <button onclick="">업데이트</button>
+                <button onclick="">브랜드</button>
+                <button onclick="">스타일</button>
+                <button onclick="">스페셜</button>
+                <button onclick="">콘텐츠</button>
+                <button onclick="">세일</button>
+                <button onclick="">이벤트</button>
+            </div>
+        </header>
+
+        <form action="join.html" name="frm">
+            <div>
+                <p style="font-weight: bolder;">회원가입</p>
+                *아이디&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="id"
+                    style="text-align: center;"><br><br>
+                *비밀번호&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" name="pw" style="text-align: center;"><br><br>
+                *비밀번호확인<input type="password" name="repw" style="text-align: center;"><br><br>
+                *이름&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="name"
+                    style="text-align: center;"><br><br>
+                *이메일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="email"
+                    style="text-align: center;"><br><br>
+                <input type="button" value="회원가입" onclick="reg()" style="text-align: center;">
+                <input type="reset" value="취소">
+            </div>
+        </form>
+
+
+
+    </div>
+</body>
+<!--제이쿼리 시작 ===================================================================================== -->
+<script>
+
+    setInterval(function () {
+        $(".showbox").eq(0).children(".movebox").animate({ top: "-30px" }, 1000, function () {
+            var x = $(".showbox").eq(0).children(".movebox").children("div").eq(0).detach();
+            $(".showbox").eq(0).children(".movebox").append(x);
+            $(".showbox").eq(0).children(".movebox").css("top", "0");
+        });
+    }, 3000);
+    setInterval(function(){
+        $("#logo").click(function(){
+            $("#logo").attr("href","project_04.html");
+        });
+    });
+
+
+
+
+    //자바 스크립트==================================================================================
+    function lank() {
+            location.href = "js43.html";
+
+        }
+        function main() {
+            location.href = "project_04.html";
+
+        }
+    function reg() {
+            //alert(1);
+            var id = document.frm.id;
+            var pw = document.frm.pw;
+            var repw = document.frm.repw;
+            var name = document.frm.name;
+            var email = document.frm.email;
+            var regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+
+            if (id.value == "" || id.value.indexOf(" ") != -1 || id.value.length > 9) {
+                alert("아이디는 8자 이하 / 빈칸을 포함 하면 안됩니다.");
+                id.focus();
+            } else if (pw.value == "" || pw.value.indexOf(" ") != -1 || pw.value.length > 13 || pw.value.length < 7) {
+                alert("비밀번호를 제대로 입력해 주세요");
+                pw.focus();
+            } else if (repw.value == "" || repw.value.indexOf(" ") != -1 || repw.value.length > 13) {
+                alert("비밀번호를 제대로 입력해 주세요");
+                repw.focus();
+            } else if (repw.value != pw.value) {
+                alert("비밀번호와 비밀번호 확인은 같아야 합니다.");
+                pw.value = "";
+                repw.value = "";
+                pw.focus();
+            } else if (regex.test(email.value) == false) {
+                alert("이메일 형식이 맞지 않습니다.");
+                email.focus();
+            } else {
+                alert("회원가입");
+                document.frm.submit();
+            }
+        }
+
+
+</script>
+
+</html>
